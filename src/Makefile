@@ -1,10 +1,10 @@
 all: tokenizer
 
-tokenizer: main.o tokenizer.o history.o
-    cc -o tokenizer main.o tokenizer.o history.o
+tokenizer: uimain.o tokenizer.o history.o
+    cc -o tokenizer uimain.o tokenizer.o history.o
 
-main.o: main.c tokenizer.h history.h
-    cc -c main.c
+uimain.o: uimain.c tokenizer.h history.h
+    cc -c uimain.c
 
 tokenizer.o: tokenizer.c tokenizer.h
     cc -c tokenizer.c
