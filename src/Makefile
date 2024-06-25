@@ -1,16 +1,34 @@
-all: tokenizer
+# Define the compiler
+CC = cc
 
-tokenizer: uimain.o tokenizer.o history.o
-    cc -o tokenizer uimain.o tokenizer.o history.o
+# Define flags
+CFLAGS = -Wall -g
 
+# Define the target executable
+TARGET = tokenizer
+
+# Define object files
+OBJS = uimain.o tokenizer.o history.o
+
+# Default target
+all: $(TARGET)
+
+# Link the object files to create the executable
+$(TARGET): $(OBJS)
+	$(CC) $(CFLAGS) -o $(TARGET) $(OBJS)
+
+# Compile uimain.c
 uimain.o: uimain.c tokenizer.h history.h
-    cc -c uimain.c
+	$(CC) $(CFLAGS) -c uimain.c
 
+# Compile tokenizer.c
 tokenizer.o: tokenizer.c tokenizer.h
-    cc -c tokenizer.c
+	$(CC) $(CFLAGS) -c tokenizer.c
 
+# Compile history.c
 history.o: history.c history.h
-    cc -c history.c
+	$(CC) $(CFLAGS) -c history.c
 
+# Clean target to remove object files and the executable
 clean:
-    rm -f *.o tokenizer
+	rm -f $(OBJS) $(TARGET)
