@@ -8,8 +8,8 @@ all: tokenizer
 
 #include file dependencies
 tokenizer.o: tokenizer.h
-history.o: history.h
-uimain.o: tokenizer.h
+history.o: history.h tokenizer.h
+uimain.o: tokenizer.h history.h
 
 # $@=target, $^=prerequisites
 tokenizer.o: tokenizer.h
